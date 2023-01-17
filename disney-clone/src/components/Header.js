@@ -119,6 +119,8 @@ const Logo = styled.a`
     display: block;
     width: 100%;
   }
+  @media (max-width: 768px) {
+  }
 `;
 const NavMenu = styled.div`
   align-items: center;
@@ -226,6 +228,10 @@ const SignOut = styled.div`
     border-radius: 50%;
     width: 100%;
     height: 100%;
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
   }
   &:hover {
     ${DropDown} {

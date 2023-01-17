@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import React from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { selectTrending } from "../features/movie/movieSlice";
 function Trending(props) {
+  const navigate = useNavigate();
   const movies = useSelector(selectTrending);
   return (
     <Container>
@@ -11,11 +12,9 @@ function Trending(props) {
       <Content>
         {movies &&
           movies.map((movie, key) => (
-            <Wrap key={key}>
+            <Wrap key={key} onClick={() => navigate("/detail/" + movie.id)}>
               {movie.id}
-              <Link to="/detail">
-                <img src={movie.cardImg} alt={movie.title} />
-              </Link>
+              <img src={movie.cardImg} alt={movie.title} />
             </Wrap>
           ))}
       </Content>

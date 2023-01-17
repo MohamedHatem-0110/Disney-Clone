@@ -14,11 +14,13 @@ import { useDispatch, useSelector } from "react-redux";
 const Home = (props) => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-  let recommends = [];
-  let newDisney = [];
-  let original = [];
-  let trending = [];
+
   useEffect(() => {
+    let recommends = [];
+    let newDisney = [];
+    let original = [];
+    let trending = [];
+    console.log("hi");
     db.collection("movies").onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
         //console.log(recommends);
@@ -40,7 +42,10 @@ const Home = (props) => {
             // trending.push({ id: doc.id, ...doc.data() });
             trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
+          default:
+            break;
         }
+        return 0;
       });
       console.log(original);
       dispatch(
